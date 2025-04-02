@@ -607,7 +607,7 @@ def main():
                 if df is not None:
                     st.session_state.data = df
                     st.session_state.filename = uploaded_file.name
-                    st.experimental_rerun()
+                    st.rerun()
         
         st.markdown('</div>', unsafe_allow_html=True)
     else:
@@ -625,7 +625,7 @@ def main():
         with col2:
             if st.button("🧪 Try Another Spell", key="new_file"):
                 st.session_state.data = None
-                st.experimental_rerun()
+                st.rerun()
         
         # Display the styled dataframe
         display_styled_data(st.session_state.data)
