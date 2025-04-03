@@ -173,11 +173,17 @@ elif page == "Persona Debate":
         
         with conversation_container:
             # Display all messages
-            for i in range(len(st.session_state.messages_1)):
-                if i % 2 == 0:  # Agent 1's turn
-                    st.chat_message(name=agent_1).write(st.session_state.messages_1[i]["content"])
-                else:  # Agent 2's turn
-                    st.chat_message(name=agent_2).write(st.session_state.messages_2[i]["content"])
+            for message in st.session_state.messages_1:
+                if message["role"] == "assistant":
+                    with st.chat_message(name=agent_1):
+                        st.markdown(f"**{agent_1}**")
+                        st.write(message['content'])
+                else:
+                    with st.chat_message(name="user"):
+                        st.markdown(f"**{agent_2}**")
+                        st.write(message['content'])
+
+
         
         # Button to continue the conversation
         if st.button("Make agents converse"):
@@ -193,7 +199,6 @@ elif page == "Persona Debate":
                 st.session_state.messages_2.append({"role": "assistant", "content": agent_2_message})
             
             time.sleep(2)  # Pause between responses
-            
             # Agent 1 responds
             with st.spinner(f"{agent_1} is thinking..."):
                 agent_1_message = get_persona_response(
