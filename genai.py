@@ -5,12 +5,10 @@ import pandas as pd
 import base64
 import requests
 import time
-import cv2
 import PyPDF2
 from docx import Document
 import re
-import openai
-from IPython.display import display, Image, HTML, Audio
+from bs4 import BeautifulSoup
 
 
 
