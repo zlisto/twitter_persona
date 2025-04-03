@@ -1,7 +1,10 @@
 streamlit
-pandas
-numpy
-matplotlib
-Pillow
-python-dotenv
 openai
+pandas
+python-docx
+PyPDF2
+python-dotenv
+beautifulsoup4
+requests
+
+
